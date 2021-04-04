@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function contact_preprocess_toolbar(&$variables) {
+  $variables['#attached']['library'][] = 'contact/contact.toolbar';
+}
+
+/**
+ * Implementing hook_mail()
+ */
+function contact_mail($key, &$message, $params) {
+
+  $body =
+    "Hi,
+
+I'm just showing off my work ...
+Works nicely huh?
+Should probably add some proofs?
+
+Sent from:     " . $params['email'] . "
+Phone:         " . $params['phone'] . "
+
+See ya!";
+
+  $message['subject'] = "Account phone number";
+  $message['body'][] = Drupal\Core\Mail\MailFormatHelper::htmlToText($body);
+}

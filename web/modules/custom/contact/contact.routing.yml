@@ -1,0 +1,15 @@
+contact.content:
+  path: '/custom_contact'
+  defaults:
+    _form: '\Drupal\contact\Form\CustomContactForm'
+    _title: 'Custom contact form'
+  requirements:
+    _permission: 'access content'
+
+contact.settings:
+  path: '/admin/custom_settings'
+  defaults:
+    _controller: '\Drupal\contact\Controller\CustomContactController::settings'
+    _title: 'Contact form settings'
+  requirements:
+    _permission: 'access content'

@@ -1,0 +1,5 @@
+contact.toolbar:
+  version: VERSION
+  css:
+    theme:
+      css/contact.toolbar.css: {}
