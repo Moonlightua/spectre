@@ -1,0 +1,31 @@
+contact.content:
+  path: '/custom_contact'
+  defaults:
+    _form: '\Drupal\contact\Form\CustomContactForm'
+    _title: 'Custom contact form'
+  requirements:
+    _permission: 'access content'
+
+contact.settings:
+  path: '/contact/custom_settings'
+  defaults:
+    _form: '\Drupal\contact\Form\CustomSettingsForm'
+    _title: 'Contact form settings'
+  requirements:
+    _permission: 'access content'
+
+contact.queue:
+  path: '/admin/config/people/queue'
+  defaults:
+    _title: 'Create node by queue'
+    _form: '\Drupal\contact\Form\QueueNode'
+  requirements:
+    _permission: 'access content'
+
+contact.ajax_form_submit_example:
+  path: '/contact/ajax-form-submit-example'
+  defaults:
+    _form: '\Drupal\dummy\Form\AjaxFormSubmitExample'
+    _title: 'Form with AJAX submit'
+  requirements:
+    _permission: 'access content'

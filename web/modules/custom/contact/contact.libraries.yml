@@ -1,0 +1,10 @@
+contact.toolbar:
+  version: VERSION
+  css:
+    theme:
+      css/contact.toolbar.css: {}
+  js:
+    dependencies:
+      - core/jquery
+      - core/drupal.dialog.ajax
+      - core/jquery.form

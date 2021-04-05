@@ -1,0 +1,13 @@
+contact.admin:
+  title: 'Contact module'
+  description: 'Example of how to make an admin settings page link'
+  parent: system.admin
+  route_name: contact.content
+  weight: 100
+
+contact.settings:
+  title: 'Contact module settings'
+  description: 'Contact form settings'
+  parent: contact.admin
+  route_name: contact.settings
+  weight: 100

@@ -1,0 +1,93 @@
+<?php
+
+use Drupal\Component\Serialization\Json;
+use Drupal\node\Entity\Node;
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function contact_preprocess_toolbar(&$variables) {
+  $variables['#attached']['library'][] = 'contact/contact.toolbar';
+}
+
+/**
+ * Implementing hook_mail()
+ */
+function contact_mail($key, &$message, $params) {
+
+  $body =
+    "Hi,
+
+I'm just showing off my work ...
+Works nicely huh?
+Should probably add some proofs?
+
+Sent from:     " . $params['email'] . "
+Phone:         " . $params['phone'] . "
+Name           " . $params['name'] . "
+
+See ya!";
+
+  $message['subject'] = "Account phone number";
+  $message['body'][] = Drupal\Core\Mail\MailFormatHelper::htmlToText($body);
+}
+
+/**
+ * Implements hook_cron().
+ */
+function contact_cron() {
+  $queue = \Drupal::queue('helloworld_mass_sending');
+  # Время которое мы отводим на выполнение очередей за данный крон. (30 сек)
+  $end = time() + 30;
+  while (time() < $end && ($item = $queue->claimItem())) {
+    # Данные которые мы добавляли в очередь находятся в $item->data.
+    $node = Node::create(array(
+      'type' => 'page',
+      'title' => 'Материал от ' . $item->data['name'],
+      'langcode' => 'ru',
+      'uid' => $item->data['uid'],
+      'status' => 1,
+      'field_fields' => array(),
+    ));
+    $node->save();
+
+    # Удаляем его из очереди, так как материал создан.
+    $queue->deleteItem($item);
+  }
+}
+
+/**
+ * Implements hook_page_attachments().
+ */
+function contact_page_attachments(array &$page) {
+  # Наш render array.
+  $json_ld = [
+    # Тип тега HTML, по стандарту json-ld - он <script>
+    '#tag' => 'script',
+    # Атрибут type по стандарту должен быть такого значения. Никаким другим.
+    '#attributes' => [
+      'type' => 'application/ld+json',
+    ],
+    #
+    '#value' => Json::encode([
+      '@context' => 'http://json-ld.org/contexts/person.jsonld',
+      '@id' => 'http://dbpedia.org/resource/John_Lennon',
+      'name' => 'John Lennon',
+      'born' => '1940-10-09',
+      'spouse' => 'http://dbpedia.org/resource/Cynthia_Lennon',
+    ])
+  ];
+
+  $page['#attached']['html_head'][] = [$json_ld, 'json-ld'];
+}
+
+/**
+ * Implements hook_block_view_alter().
+ */
+function contact_block_view_alter(array &$build, \Drupal\Core\Block\BlockPluginInterface $block) {
+  switch ($build['#id']) {
+    # Машинное имя блока.
+    case 'linktohelp':
+      $build['#attached']['library'][] = 'contact/contact.toolbar';
+  }
+}
