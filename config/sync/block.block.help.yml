@@ -1,0 +1,25 @@
+uuid: 533b2dba-2f72-4cc7-9ca7-60d0dde58e5c
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:9fd82ab1-5f83-496a-b56e-2d1ea34e19ea'
+  module:
+    - block_content
+  theme:
+    - bartik
+id: help
+theme: bartik
+region: sidebar_second
+weight: 0
+provider: null
+plugin: 'block_content:9fd82ab1-5f83-496a-b56e-2d1ea34e19ea'
+settings:
+  id: 'block_content:9fd82ab1-5f83-496a-b56e-2d1ea34e19ea'
+  label: Help
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

@@ -6,7 +6,7 @@ use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Configure example settings for this site.
+ * Configure settings for generator.
  */
 class CustomSettingsForm extends ConfigFormBase {
 

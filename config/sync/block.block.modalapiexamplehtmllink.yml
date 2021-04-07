@@ -1,0 +1,21 @@
+uuid: 2ec3b7e1-cdca-4377-a53a-e584ae16a6ce
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact
+  theme:
+    - bartik
+id: modalapiexamplehtmllink
+theme: bartik
+region: sidebar_second
+weight: 0
+provider: null
+plugin: block_with_modal_html_link
+settings:
+  id: block_with_modal_html_link
+  label: 'Modal API example: HTML link'
+  provider: contact
+  label_display: visible
+  nid: '1'
+visibility: {  }

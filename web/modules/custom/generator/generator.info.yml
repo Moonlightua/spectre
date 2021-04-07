@@ -1,0 +1,5 @@
+name: Custom generator module
+description: Module for generation some content
+type: module
+package: Custom
+core_version_requirement: ^8.8 || ^9

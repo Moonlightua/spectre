@@ -1,0 +1,7 @@
+generaton.form:
+  path: '/generator'
+  defaults:
+    _form: '\Drupal\generator\Form\GeneratorForm'
+    _title: 'Generator'
+  requirements:
+    _permission: 'access content'

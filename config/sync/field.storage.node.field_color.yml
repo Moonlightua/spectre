@@ -1,0 +1,19 @@
+uuid: 1aa451b0-f93d-4d03-89fe-621f0646dde6
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact
+    - node
+id: node.field_color
+field_name: field_color
+entity_type: node
+type: my_color_field
+settings: {  }
+module: contact
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

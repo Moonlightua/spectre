@@ -1,0 +1,14 @@
+uuid: 96e98b73-f266-4bcd-bc57-78045d0fa070
+name: Site
+mail: site@site.site
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /node
+admin_compact_mode: false
+weight_select_max: 100
+langcode: en
+default_langcode: en
+_core:
+  default_config_hash: yTxtFqBHnEWxQswuWvkjE8mKw2t8oKuCL1q8KnfHuGE

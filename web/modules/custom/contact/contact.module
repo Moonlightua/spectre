@@ -16,7 +16,7 @@ function contact_preprocess_toolbar(&$variables) {
 function contact_mail($key, &$message, $params) {
 
   $body =
-    "Hi,
+    t("Hi,
 
 I'm just showing off my work ...
 Works nicely huh?
@@ -26,7 +26,7 @@ Sent from:     " . $params['email'] . "
 Phone:         " . $params['phone'] . "
 Name           " . $params['name'] . "
 
-See ya!";
+See ya!", []);
 
   $message['subject'] = "Account phone number";
   $message['body'][] = Drupal\Core\Mail\MailFormatHelper::htmlToText($body);
